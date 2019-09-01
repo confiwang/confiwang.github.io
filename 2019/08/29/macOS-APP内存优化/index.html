@@ -93,7 +93,7 @@
 <meta property="og:image" content="http://confiwang.github.io/2019/08/29/macOS-APP内存优化/drawrect.png">
 <meta property="og:image" content="http://confiwang.github.io/2019/08/29/macOS-APP内存优化/CAShapeLayer.png">
 <meta property="og:image" content="http://confiwang.github.io/2019/08/29/macOS-APP内存优化/image-io.png">
-<meta property="og:updated_time" content="2019-09-01T08:21:32.815Z">
+<meta property="og:updated_time" content="2019-09-01T09:14:24.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS APP内存优化">
 <meta name="twitter:description" content="概述 我们为什么减少内存占用？  为了更好的用户体验      内存是有限且系统共享的资源，一个程序占用更多，系统和其他程序所能用的就更少。程序启动前都需要先加载到内存中，并且在程序运行过程中的数据操作也需要占用一定的内存资源。减少内存占用也能同时减少其对 CPU 时间维度上的消耗，从而使不仅你所开发的 App，其他 App 以及整个系统也都能表现的更好。  可以减少的内存占用有哪些？  从苹果的">
@@ -420,10 +420,13 @@
 <h2 id="内存优化的方法论"><a href="#内存优化的方法论" class="headerlink" title="内存优化的方法论"></a>内存优化的方法论</h2><ol>
 <li>在介绍了上述几种工具之后，我还希望可以借助一些工具，对内存占用进行一些分析操作，比如对分配的内存进行分类，排序，查看其分配堆栈，查看其被谁持有。<br>左图就是由此产生的内存问题分析方法，具体操作是打开APP，持续使用，期间可以随时导出Memory Graph文件，使用VMMap查看文件，对文件中的内存分配进行分类排序，取其中分配最大的一块内存的首地址使用Malloc_History跟Leaks进行分析，可以得到这块内存分配的详细堆栈以及当前是被谁引用，接下来就是对这块内存进行优化，通过不断的优化当前内存分配的大头，带来APP内存的巨大下降。<br><img src="methodology.jpg" alt="methodology">  </li>
 </ol>
-<h4 id="通过上述方法进行分析，发现APP中内存占用几个大类"><a href="#通过上述方法进行分析，发现APP中内存占用几个大类" class="headerlink" title="通过上述方法进行分析，发现APP中内存占用几个大类"></a>通过上述方法进行分析，发现APP中内存占用几个大类</h4><pre><code>a. 界面的渲染
-b. 图片的压缩
-c. 各种缓存
-d. bug</code></pre><h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><blockquote>
+<h3 id="通过上述方法进行分析，发现APP中内存占用几个大类"><a href="#通过上述方法进行分析，发现APP中内存占用几个大类" class="headerlink" title="通过上述方法进行分析，发现APP中内存占用几个大类"></a>通过上述方法进行分析，发现APP中内存占用几个大类</h3><ol>
+<li>界面的渲染</li>
+<li>图片的压缩</li>
+<li>各种缓存</li>
+<li>bug</li>
+</ol>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><blockquote>
 <h3 id="接下来我们逐个分析，介绍APP的内存占用"><a href="#接下来我们逐个分析，介绍APP的内存占用" class="headerlink" title="接下来我们逐个分析，介绍APP的内存占用"></a>接下来我们逐个分析，介绍APP的内存占用</h3></blockquote>
 <h4 id="界面的渲染"><a href="#界面的渲染" class="headerlink" title="界面的渲染"></a>界面的渲染</h4><ol>
 <li>view的定制通过重写drawrect消耗大量内存  </li>
@@ -652,7 +655,7 @@ d. bug</code></pre><h2 id="方案"><a href="#方案" class="headerlink" title="�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析工具"><span class="nav-number">2.</span> <span class="nav-text">分析工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存优化的方法论"><span class="nav-number">3.</span> <span class="nav-text">内存优化的方法论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过上述方法进行分析，发现APP中内存占用几个大类"><span class="nav-number">3.0.1.</span> <span class="nav-text">通过上述方法进行分析，发现APP中内存占用几个大类</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">4.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来我们逐个分析，介绍APP的内存占用"><span class="nav-number">4.1.</span> <span class="nav-text">接下来我们逐个分析，介绍APP的内存占用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#界面的渲染"><span class="nav-number">4.1.1.</span> <span class="nav-text">界面的渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片的压缩"><span class="nav-number">4.1.2.</span> <span class="nav-text">图片的压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种缓存"><span class="nav-number">4.1.3.</span> <span class="nav-text">各种缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bug"><span class="nav-number">4.1.4.</span> <span class="nav-text">bug</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析工具"><span class="nav-number">2.</span> <span class="nav-text">分析工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存优化的方法论"><span class="nav-number">3.</span> <span class="nav-text">内存优化的方法论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过上述方法进行分析，发现APP中内存占用几个大类"><span class="nav-number">3.1.</span> <span class="nav-text">通过上述方法进行分析，发现APP中内存占用几个大类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案"><span class="nav-number">4.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来我们逐个分析，介绍APP的内存占用"><span class="nav-number">4.1.</span> <span class="nav-text">接下来我们逐个分析，介绍APP的内存占用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#界面的渲染"><span class="nav-number">4.1.1.</span> <span class="nav-text">界面的渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片的压缩"><span class="nav-number">4.1.2.</span> <span class="nav-text">图片的压缩</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各种缓存"><span class="nav-number">4.1.3.</span> <span class="nav-text">各种缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bug"><span class="nav-number">4.1.4.</span> <span class="nav-text">bug</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
