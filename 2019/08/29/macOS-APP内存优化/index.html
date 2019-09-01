@@ -841,7 +841,7 @@ d. bug</code></pre><h2 id="方案"><a href="#方案" class="headerlink" title="�
           repo: 'BlogComment',
           owner: 'confiwang',
           admin: ['confiwang'],
-          id: location.pathname,
+          id: decodeURI(location.pathname),
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           
