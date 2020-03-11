@@ -339,6 +339,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数&#58;</span>
+                
+                <span title="字数">
+                  2.6k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -450,7 +469,7 @@
 <li><p>自旋锁的坑<br>新版iOS中，系统维护了5个不同的线程优先级/QoS: background，utility，default，user-initiated，user-interactive。高优先级线程始终会在低优先级线程前执行，一个线程不会受到比它更低优先级线程的干扰。这种线程调度算法会产生潜在的优先级反转问题，导致低优先级线程迟迟不能处理资源并释放锁，导致陷入死锁，从而破坏了spin lock。</p>
 </li>
 <li><p>下面是苹果spinlock_t实现，系统中自旋锁已经全部改为互斥锁（os_unfair_lock）实现了，只是名称一直没有更改，坑货。  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">spinlock_t</span> = mutex_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">mutex_t</span> = mutex_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">monitor_t</span> = monitor_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">recursive_mutex_t</span> = recursive_mutex_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Use fork_unsafe_lock to get a lock that isn't </span></span><br><span class="line"><span class="comment">// acquired and released around fork().</span></span><br><span class="line"><span class="comment">// All fork-safe locks are checked in debug builds.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">fork_unsafe_lock_t</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="title">fork_unsafe_lock_t</span><span class="params">()</span> </span>= <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">fork_unsafe_lock_t</span> fork_unsafe_lock;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"objc-lockdebug.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">bool</span> Debug&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mutex_tt</span> :</span> <span class="keyword">nocopy_t</span> &#123;</span><br><span class="line">    os_unfair_lock mLock;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    constexpr mutex_tt() : mLock(OS_UNFAIR_LOCK_INIT) &#123;</span><br><span class="line">        lockdebug_remember_mutex(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    constexpr mutex_tt(const fork_unsafe_lock_t unsafe) : mLock(OS_UNFAIR_LOCK_INIT) &#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lockdebug_mutex_lock(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        os_unfair_lock_lock_with_options_inline</span><br><span class="line">            (&amp;mLock, OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lockdebug_mutex_unlock(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        os_unfair_lock_unlock_inline(&amp;mLock);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">spinlock_t</span> = mutex_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">mutex_t</span> = mutex_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">monitor_t</span> = monitor_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">recursive_mutex_t</span> = recursive_mutex_tt&lt;LOCKDEBUG&gt;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Use fork_unsafe_lock to get a lock that isn't </span></span><br><span class="line"><span class="comment">// acquired and released around fork().</span></span><br><span class="line"><span class="comment">// All fork-safe locks are checked in debug builds.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">fork_unsafe_lock_t</span> &#123;</span></span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="title">fork_unsafe_lock_t</span><span class="params">()</span> </span>= <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">fork_unsafe_lock_t</span> fork_unsafe_lock;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"objc-lockdebug.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">bool</span> Debug&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">mutex_tt</span> :</span> <span class="keyword">nocopy_t</span> &#123;</span><br><span class="line">    os_unfair_lock mLock;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="title">mutex_tt</span><span class="params">()</span> : <span class="title">mLock</span><span class="params">(OS_UNFAIR_LOCK_INIT)</span> </span>&#123;</span><br><span class="line">        lockdebug_remember_mutex(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">constexpr</span> <span class="title">mutex_tt</span><span class="params">(<span class="keyword">const</span> <span class="keyword">fork_unsafe_lock_t</span> unsafe)</span> : <span class="title">mLock</span><span class="params">(OS_UNFAIR_LOCK_INIT)</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lockdebug_mutex_lock(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        os_unfair_lock_lock_with_options_inline</span><br><span class="line">            (&amp;mLock, OS_UNFAIR_LOCK_DATA_SYNCHRONIZATION);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unlock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lockdebug_mutex_unlock(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">        os_unfair_lock_unlock_inline(&amp;mLock);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -612,7 +631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,6 +722,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Confiwang</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">19.8k</span>
   
 </div>
 
