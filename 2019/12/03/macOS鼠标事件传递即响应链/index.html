@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="夜星辰 - 王陈云的博客" type="application/atom+xml">
+
 
 
 
@@ -392,7 +394,7 @@
 <p>我们都知道APPKit基于hitTest:来确定一个事件的响应链，这个确定响应链的操作是自上而下的，当mouseDown位置超出父View的视图边界，hitTest:方法将忽略这个视图和它的所有子视图。所以，即使当视图的masksToBounds属性为NO，子视图超过视图的边界，鼠标真实点击到这个子视图，鼠标事件也不会被响应。  </p>
 <h4 id="HitTest的应用场景"><a href="#HitTest的应用场景" class="headerlink" title="HitTest的应用场景"></a>HitTest的应用场景</h4><ul>
 <li><p>如何使得较小的View接收超过View大小的事件？<br>  可以通过重写hitTest:方法，扩大subview的处理范围实现</p>
-  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (NSView *)hitTest:(NSPoint)point &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (NSView *subview in self.subviews) &#123;</span><br><span class="line">        </span><br><span class="line">        CGPoint convertedPoint = [subview convertPoint:point fromView:self];</span><br><span class="line">        </span><br><span class="line">        convertedPoint.y+=self.documentVisibleRect.origin.y;</span><br><span class="line"></span><br><span class="line">        NSView *hitTestView = [subview hitTest:convertedPoint];</span><br><span class="line">        <span class="keyword">if</span> (hitTestView) &#123;</span><br><span class="line">            <span class="keyword">return</span> hitTestView;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (NSView *)hitTest:(NSPoint)<span class="built_in">point</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (NSView *subview in self.subviews) &#123;</span><br><span class="line">        </span><br><span class="line">        CGPoint convertedPoint = [subview convertPoint:<span class="built_in">point</span> fromView:self];</span><br><span class="line">        </span><br><span class="line">        convertedPoint.y+=self.documentVisibleRect.origin.y;</span><br><span class="line"></span><br><span class="line">        NSView *hitTestView = [subview hitTest:convertedPoint];</span><br><span class="line">        <span class="keyword">if</span> (hitTestView) &#123;</span><br><span class="line">            <span class="keyword">return</span> hitTestView;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> nil;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如何通过View获取到管理它的ViewController？<br>  通过NSViewController的view属性可以访问到管理的view对象，以及此view的所有subview，但是根据一个view，没有直接的方法可以获取到管理它的NSViewController，这个时候，可以使用responder chain来间接获取。</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NSResponder *responder = self.nextResponder;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">    NSLog(@<span class="string">"find nextResponder :%@"</span>, [responder className]);</span><br><span class="line">    <span class="keyword">if</span> ([responder isKindOfClass:[NSViewController class]]) &#123;</span><br><span class="line">        NSLog(@<span class="string">"find %@"</span>, [responder className]);</span><br><span class="line">    &#125;</span><br><span class="line">    responder = responder.nextResponder;</span><br><span class="line">&#125; <span class="keyword">while</span> (responder);</span><br></pre></td></tr></table></figure>
@@ -553,6 +555,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           

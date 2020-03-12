@@ -74,6 +74,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="夜星辰 - 王陈云的博客" type="application/atom+xml">
+
 
 
 
@@ -528,7 +530,7 @@
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objdump -h WeChat.app/Contents/MacOS/WeChat</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看可执行文件的代码段，数据段，BSS段的长度<br>  dec字段表示段长度和的十进制 ，hex表示长度和的十六进制</p>
-  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">size WeChat.app/Contents/MacOS/WeChat</span><br></pre></td></tr></table></figure>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">size</span> WeChat.app/Contents/MacOS/WeChat</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看framework的架构</p>
   <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lipo -info andromeda.framework/andromeda</span><br></pre></td></tr></table></figure>
@@ -697,6 +699,13 @@
 
           </nav>
 
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
           
 
           
