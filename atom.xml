@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>夜星辰 - 王陈云的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://confiwang.github.io/"/>
+  <updated>2020-03-11T13:21:52.990Z</updated>
+  <id>http://confiwang.github.io/</id>
+  
+  <author>
+    <name>Confiwang</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>KVO与KVC详解</title>
+    <link href="http://confiwang.github.io/2020/03/11/KVO%E4%B8%8EKVC%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://confiwang.github.io/2020/03/11/KVO%E4%B8%8EKVC%E8%AF%A6%E8%A7%A3/</id>
+    <published>2020-03-11T12:51:56.000Z</published>
+    <updated>2020-03-11T13:21:52.990Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="底层探索" scheme="http://confiwang.github.io/categories/%E5%BA%95%E5%B1%82%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="macOS" scheme="http://confiwang.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mach-O文件学习与应用</title>
+    <link href="http://confiwang.github.io/2020/03/10/Mach-O%E6%96%87%E4%BB%B6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
+    <id>http://confiwang.github.io/2020/03/10/Mach-O%E6%96%87%E4%BB%B6%E5%AD%A6%E4%B9%A0%E4%B8%8E%E5%BA%94%E7%94%A8/</id>
+    <published>2020-03-10T14:10:32.000Z</published>
+    <updated>2020-03-10T14:39:34.540Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="底层探索" scheme="http://confiwang.github.io/categories/%E5%BA%95%E5%B1%82%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="macOS" scheme="http://confiwang.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>macOS 10.15截图权限检测</title>
+    <link href="http://confiwang.github.io/2020/01/08/macOS%2010-15%E6%88%AA%E5%9B%BE%E6%9D%83%E9%99%90%E6%A3%80%E6%B5%8B/"/>
+    <id>http://confiwang.github.io/2020/01/08/macOS%2010-15%E6%88%AA%E5%9B%BE%E6%9D%83%E9%99%90%E6%A3%80%E6%B5%8B/</id>
+    <published>2020-01-08T13:59:57.000Z</published>
+    <updated>2020-01-08T14:31:36.590Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="小伎俩" scheme="http://confiwang.github.io/categories/%E5%B0%8F%E4%BC%8E%E4%BF%A9/"/>
+    
+    
+      <category term="macOS" scheme="http://confiwang.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的2019年</title>
+    <link href="http://confiwang.github.io/2020/01/01/%E6%88%91%E7%9A%842019%E5%B9%B4/"/>
+    <id>http://confiwang.github.io/2020/01/01/%E6%88%91%E7%9A%842019%E5%B9%B4/</id>
+    <published>2020-01-01T03:49:03.000Z</published>
+    <updated>2020-01-01T03:56:17.250Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="脚印" scheme="http://confiwang.github.io/categories/%E8%84%9A%E5%8D%B0/"/>
+    
+    
+      <category term="年终总结" scheme="http://confiwang.github.io/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>macOS鼠标事件传递即响应链</title>
+    <link href="http://confiwang.github.io/2019/12/03/macOS%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E5%8D%B3%E5%93%8D%E5%BA%94%E9%93%BE/"/>
+    <id>http://confiwang.github.io/2019/12/03/macOS%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92%E5%8D%B3%E5%93%8D%E5%BA%94%E9%93%BE/</id>
+    <published>2019-12-03T15:21:22.000Z</published>
+    <updated>2019-12-12T12:08:08.330Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://confiwang.github.io/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Objective-C" scheme="http://confiwang.github.io/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IPv6概览</title>
+    <link href="http://confiwang.github.io/2019/11/16/IPv6%E6%A6%82%E8%A7%88/"/>
+    <id>http://confiwang.github.io/2019/11/16/IPv6%E6%A6%82%E8%A7%88/</id>
+    <published>2019-11-16T03:04:28.000Z</published>
+    <updated>2019-11-16T03:51:17.870Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="网络" scheme="http://confiwang.github.io/categories/%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="IPv6" scheme="http://confiwang.github.io/tags/IPv6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>设计模式开篇</title>
+    <link href="http://confiwang.github.io/2019/11/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%BC%80%E7%AF%87/"/>
+    <id>http://confiwang.github.io/2019/11/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%BC%80%E7%AF%87/</id>
+    <published>2019-11-12T01:51:13.000Z</published>
+    <updated>2019-11-12T01:59:08.200Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="软件架构" scheme="http://confiwang.github.io/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="设计模式" scheme="http://confiwang.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>详解macOS多线程和锁</title>
+    <link href="http://confiwang.github.io/2019/10/11/%E8%AF%A6%E8%A7%A3macOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E9%94%81/"/>
+    <id>http://confiwang.github.io/2019/10/11/%E8%AF%A6%E8%A7%A3macOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E9%94%81/</id>
+    <published>2019-10-11T14:24:46.000Z</published>
+    <updated>2019-10-12T01:22:24.400Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://confiwang.github.io/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Objective-C" scheme="http://confiwang.github.io/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入Objective-C：方法调用</title>
+    <link href="http://confiwang.github.io/2019/09/22/%E6%B7%B1%E5%85%A5Objective-C%EF%BC%9A%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/"/>
+    <id>http://confiwang.github.io/2019/09/22/%E6%B7%B1%E5%85%A5Objective-C%EF%BC%9A%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8/</id>
+    <published>2019-09-22T01:52:36.000Z</published>
+    <updated>2019-10-11T14:29:30.290Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="底层探索" scheme="http://confiwang.github.io/categories/%E5%BA%95%E5%B1%82%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Runtime" scheme="http://confiwang.github.io/tags/Runtime/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Objective-C深拷贝&amp;浅拷贝</title>
+    <link href="http://confiwang.github.io/2019/09/13/Objective-C%E6%B7%B1%E6%8B%B7%E8%B4%9D&amp;%E6%B5%85%E6%8B%B7%E8%B4%9D/"/>
+    <id>http://confiwang.github.io/2019/09/13/Objective-C%E6%B7%B1%E6%8B%B7%E8%B4%9D&amp;%E6%B5%85%E6%8B%B7%E8%B4%9D/</id>
+    <published>2019-09-13T04:38:44.000Z</published>
+    <updated>2019-09-13T06:02:44.200Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="基础知识" scheme="http://confiwang.github.io/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+      <category term="Objective-C" scheme="http://confiwang.github.io/tags/Objective-C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>macOS APP内存优化</title>
+    <link href="http://confiwang.github.io/2019/08/29/macOS-APP%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/"/>
+    <id>http://confiwang.github.io/2019/08/29/macOS-APP%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/</id>
+    <published>2019-08-29T05:35:06.000Z</published>
+    <updated>2019-09-01T09:14:24.150Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+      <category term="性能优化" scheme="http://confiwang.github.io/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    
+      <category term="macOS" scheme="http://confiwang.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://confiwang.github.io/2019/08/29/hello-world/"/>
+    <id>http://confiwang.github.io/2019/08/29/hello-world/</id>
+    <published>2019-08-29T03:33:06.000Z</published>
+    <updated>2019-09-13T06:08:37.600Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="hello" scheme="http://confiwang.github.io/tags/hello/"/>
+    
+  </entry>
+  
+</feed>
