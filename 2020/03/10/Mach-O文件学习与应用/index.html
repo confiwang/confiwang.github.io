@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://confiwang.github.io/2020/03/10/Mach-O文件学习与应用/lib.jpg">
 <meta property="og:image" content="http://confiwang.github.io/2020/03/10/Mach-O文件学习与应用/32or64.jpg">
 <meta property="og:image" content="http://confiwang.github.io/2020/03/10/Mach-O文件学习与应用/dump.jpg">
-<meta property="og:updated_time" content="2020-03-10T14:39:34.540Z">
+<meta property="og:updated_time" content="2020-03-16T04:30:33.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mach-O文件学习与应用">
 <meta name="twitter:description" content="Mach-O文件 运行时可执行文件的文件类型   包含以下几种类型 Executable—Main binary for application Dylib—Dynamic library (aka DSO or DLL) Bundle—Dylib that cannot be linked, only dlopen(), e.g. plug-ins Image—An executable, dy">
@@ -512,7 +512,7 @@
 <p>因为OC是动态原因，编译的时候并不会主动删除没有被使用的类。</p>
 </blockquote>
 <ul>
-<li><p>删除无用的类<br>通过对Mach-O文件的了解，可以知道<strong>TEXT:</strong>objc_methname:中包含了代码中的所有方法，而<strong>DATA</strong>objc_selrefs中则包含了所有被使用的方法的引用，通过取两个集合的差集就可以得到所有未被使用的方法</p>
+<li><p>删除无用的类<br>Mach-o文件中<strong>DATA __objc_classrefs段记录了引用类的地址，</strong>DATA __objc_classlist段记录了所有类的地址，取差集可以得到未使用的类的地址，然后进行符号化，就可以得到未被引用的类信息。</p>
 </li>
 <li><p>删除无用的方法<br>分析Mach-o文件中的__DATA __objc_selrefs段得到使用到的方法，通过otool找出实现的所有方法。取差集得到未使用的方法。然后过滤setter和getter，过滤协议方法，再加上一些其它的过滤规则得到最终的结果。</p>
 </li>
